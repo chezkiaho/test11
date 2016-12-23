@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace test
+namespace BE
 {
-    public class Class1
+    enum education
     {
+        Diploma,
+        BA,
+        MA,
+        PHD,
+        Studnet
     }
 }
