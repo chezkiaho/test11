@@ -1,23 +1,24 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
-using DAL;
+using DS;
 
-namespace DS
+namespace DAL
 {
-    class Dal_imp : DAL.Idal
+    public class Dal_imp : DAL.Idal
     {
-        private int countContract = 12340000;
-        private int countSpecialization = 12340000;
+        private static int countContractKey = 12340000;
+        private static int countSpecializationKey = 12340000;
+        private static int countEmployeeKey = 12340000;
+        private static int countEmployerKey = 12340000;
         public void contractAdd(Contract tempContract)
         {
-            if (tempContract.ContractNumber == null)
+            if (tempContract.ContractNumber == null || tempContract.ContractNumber == 0)
             {
-                tempContract.ContractNumber = countContract++;
+                tempContract.ContractNumber = countContractKey++;
             }
             var obj = DataSource.contractList.FirstOrDefault(Contract => Contract.ContractNumber == tempContract.ContractNumber);
             if (obj != null)
@@ -66,24 +67,32 @@ namespace DS
 
         public void employeeAdd(Employee tempEmployee)
         {
-            
-            var obj = DataSource.employeeList.FirstOrDefault(Employee => Employee.Id == tempEmployee.Id);
-            if (obj != null)
+            if (tempEmployee.Key == 0 )
             {
-                throw new Exception(String.Format("the employee id {0}  alredy exsist", tempEmployee.Id));
+                dynamic temp;
+                do
+                {
+                    temp = DataSource.employeeList.FirstOrDefault(Employee => Employee.Key == ++countEmployeeKey);
+                } while (temp != null);
+                tempEmployee.Key = countEmployeeKey ;
             }
             else
             {
-                DataSource.employeeList.Add(tempEmployee);
+                var obj = DataSource.employeeList.FirstOrDefault(Employee => Employee.Key == tempEmployee.Key);
+                if (obj != null)
+                {
+                    throw new Exception(String.Format("the employee key {0}  alredy exsist", tempEmployee.Key));
+                }
             }
+            DataSource.employeeList.Add(tempEmployee);
         }
 
         public void employeeRemove(Employee tempEmployee)
         {
-            var obj = DataSource.employeeList.FirstOrDefault(Employee => Employee.Id == tempEmployee.Id);
+            var obj = DataSource.employeeList.FirstOrDefault(Employee => Employee.Key == tempEmployee.Key);
             if (obj == null)
             {
-                throw new Exception(String.Format("the employee id {0} not found", tempEmployee.Id));
+                throw new Exception(String.Format("the employee key {0} not found", tempEmployee.Key));
             }
             else
             {
@@ -93,10 +102,10 @@ namespace DS
 
         public void employeeUpdate(Employee tempEmployee)
         {
-            var obj = DataSource.employeeList.FirstOrDefault(Employee => Employee.Id == tempEmployee.Id);
+            var obj = DataSource.employeeList.FirstOrDefault(Employee => Employee.Key == tempEmployee.Key);
             if (obj == null)
             {
-                throw new Exception(String.Format("the employee id {0} not found", tempEmployee.Id));
+                throw new Exception(String.Format("the employee key {0} not found", tempEmployee.Key));
             }
             else
             {
@@ -106,23 +115,32 @@ namespace DS
 
         public void employerAdd(Employer tempEmployer)
         {
-            var obj = DataSource.employerList.FirstOrDefault(Employer => Employer.CompanyId == tempEmployer.CompanyId);
-            if (obj != null)
+            if (tempEmployer.Key == 0 || tempEmployer.Key == null)
             {
-                throw new Exception(String.Format("the employer id {0}  alredy exsist", tempEmployer.CompanyId));
+                dynamic temp;
+                do
+                {
+                    temp = DataSource.employerList.FirstOrDefault(Employer => Employer.Key == countEmployerKey++);
+                } while (temp != null && temp != 0);
+                tempEmployer.Key = countEmployerKey - 1;
             }
             else
             {
-                DataSource.employerList.Add(tempEmployer);
+                var obj = DataSource.employerList.FirstOrDefault(Employer => Employer.Key == tempEmployer.Key);
+                if (obj != null)
+                {
+                    throw new Exception(String.Format("the employer key {0}  alredy exsist", tempEmployer.Key));
+                }
             }
+            DataSource.employerList.Add(tempEmployer);
         }
 
         public void employerRemove(Employer tempEmployer)
         {
-            var obj = DataSource.employerList.FirstOrDefault(Employer => Employer.CompanyId == tempEmployer.CompanyId);
+            var obj = DataSource.employerList.FirstOrDefault(Employer => Employer.Key == tempEmployer.Key);
             if (obj == null)
             {
-                throw new Exception(String.Format("the employer id {0}  not found", tempEmployer.CompanyId));
+                throw new Exception(String.Format("the employer key {0}  not found", tempEmployer.Key));
             }
             else
             {
@@ -132,10 +150,10 @@ namespace DS
 
         public void employerUpdate(Employer tempEmployer)
         {
-            var obj = DataSource.employerList.FirstOrDefault(Employer => Employer.CompanyId == tempEmployer.CompanyId);
+            var obj = DataSource.employerList.FirstOrDefault(Employer => Employer.Key == tempEmployer.Key);
             if (obj == null)
             {
-                throw new Exception(String.Format("the employer id {0}  not found", tempEmployer.CompanyId));
+                throw new Exception(String.Format("the employer key {0}  not found", tempEmployer.Key));
             }
             else
             {
@@ -165,9 +183,9 @@ namespace DS
 
         public void specializationAdd(Specialization tempSpecialization)
         {
-            if (tempSpecialization.SpecialtyNum == null )
+            if (tempSpecialization.SpecialtyNum == null)
             {
-                tempSpecialization.SpecialtyNum = countContract++;
+                tempSpecialization.SpecialtyNum = countContractKey++;
             }
             var obj = DataSource.specializationList.FirstOrDefault(Specialization => Specialization.SpecialtyNum == tempSpecialization.SpecialtyNum);
             if (obj != null)
@@ -196,7 +214,7 @@ namespace DS
             {
                 DataSource.specializationList.Remove(tempSpecialization);
             }
-           
+
         }
 
         public void specializationUpdate(Specialization tempSpecialization)

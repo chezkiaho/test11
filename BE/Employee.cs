@@ -8,9 +8,21 @@ namespace BE
 {
    public class Employee
     {
-        private int id;
+        public Employee(int gKey = 0)
+        {
+            Key = gKey;
+        }
+        private int key;
+        public int Key
+        {
+            get { return key; }
+            set { key = value; }
+        }
 
-        public int Id
+
+        private int ?id;
+
+        public int ?Id
         {
             get { return id; }
             set { id = value; }

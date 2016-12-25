@@ -4,14 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BE
+namespace BL
 {
-   public enum education
+    interface IBL
     {
-        Diploma,
-        BA,
-        MA,
-        PHD,
-        Studnet
     }
 }

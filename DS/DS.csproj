@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dal_imp.cs" />
     <Compile Include="DataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -48,10 +47,6 @@
     <ProjectReference Include="..\BE\BE.csproj">
       <Project>{63e945e5-df92-4d89-90d8-e77c01bab013}</Project>
       <Name>BE</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{218672be-4162-40f3-b8d7-61b13f48f3d1}</Project>
-      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

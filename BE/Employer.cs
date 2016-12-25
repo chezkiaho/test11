@@ -8,6 +8,13 @@ namespace BE
 {
     public class Employer
     {
+        private int? key;
+        public int? Key
+        {
+            get { return key; }
+            set { key = value; }
+        }
+
         public enum fieldEnum 
         {
             dataBases, communication, dataSecurity, serverSide, mobile, guiDesign
