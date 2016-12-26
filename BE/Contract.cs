@@ -8,7 +8,14 @@ namespace BE
 {
     public class Contract
     {
-      
+
+        private int specializationId;
+        public int SpecializationId
+        {
+            get { return specializationId; }
+            set { specializationId = value; }
+        }
+
         private int? contractNumber;
         public int? ContractNumber
         {

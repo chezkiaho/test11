@@ -8,9 +8,9 @@ namespace BE
 {
    public class Employee
     {
-        public Employee(int gKey = 0)
+        public Employee(int gotKey = 0)
         {
-            Key = gKey;
+            Key = gotKey;
         }
         private int key;
         public int Key
@@ -20,9 +20,9 @@ namespace BE
         }
 
 
-        private int ?id;
+        private int id;
 
-        public int ?Id
+        public int Id
         {
             get { return id; }
             set { id = value; }

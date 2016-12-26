@@ -233,5 +233,15 @@ namespace DAL
                 obj = tempSpecialization;
             }
         }
+
+        public ICollection<BankBranch> getAllBranchesIsrael()
+        {
+            List<BankBranch> tempBranches = new List<BankBranch>();
+            for (int i = 0; i < 5; i++)
+            {
+                tempBranches.Add(new BankBranch(i));
+            }
+            return tempBranches;
+        }
     }
 }

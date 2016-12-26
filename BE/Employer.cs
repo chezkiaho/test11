@@ -26,8 +26,8 @@ namespace BE
             set { field = value; }
         }
 
-        private string companyId;
-        public string CompanyId
+        private int companyId;
+        public int CompanyId
         {
             get { return companyId; }
             set { companyId = value; }

@@ -19,8 +19,8 @@ namespace BE
             set { field = value; }
         }
 
-        private int? specialtyNum;
-        public int? SpecialtyNum
+        private int specialtyNum;
+        public int SpecialtyNum
         {
             get { return specialtyNum; }
             set { specialtyNum = value; } 
