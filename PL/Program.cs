@@ -11,35 +11,20 @@ namespace PL
     {
         static void Main(string[] args)
         {
-            Dal_imp dal = new Dal_imp();
-            while (true)
+            List<Contract> contlist = new List<Contract>();
+            List<Employee> empeelist = new List<Employee>();
+            List<Employer> emperlist = new List<Employer>();
+            for (int i = 0; i < 5; i++)
             {
-
-
-                try
-                {
-                    int num = 1;
-                    for (int i = 0; i < 10; i++)
-                    {
-                        dal.employeeAdd(new Employee(0));
-                    }
-                    //while (num < 10)
-                    //{
-                        
-                    //    num++;
-                    //}
-                    foreach (var item in dal.getAllEmployee())
-                    {
-                        Console.WriteLine("\n" + item.Key);
-                    }
-                }
-                catch (Exception)
-                {
-
-                    Console.WriteLine("\nerror " + DateTime.Now);
-                    Console.Read();
-                }
+                var emee = new Employee(i * 8);
+                Employer emer = new Employer(i * 5);
+                contlist.Add(new Contract(emee, emer));
             }
+            foreach (var item in contlist)
+            {
+                Console.WriteLine(item.ToString() + "\n" );
+            }
+            Console.ReadKey();
         }
 
 
