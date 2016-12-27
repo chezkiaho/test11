@@ -25,9 +25,12 @@ namespace BL
         void contractRemove(Contract tempContract);
         void contractUpdate(Contract tempContract);
 
-        ICollection<Specialization> getAllSpecialization();
-        ICollection<Employee> getAllEmployee();
-        ICollection<Employer> getAllEmployer();
-        ICollection<Contract> getAllContract();
+        //ICollection<Specialization> getAllSpecialization();
+        //ICollection<Employee> getAllEmployee();
+        //ICollection<Employer> getAllEmployer();
+        //ICollection<Contract> getAllContract();
+
+        ICollection<Specialization> getContractsBySpecialty(bool sorted = false);
+        ICollection<Contract> getContractsByAdress(bool sorted = false);
     }
 }
