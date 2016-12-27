@@ -8,14 +8,12 @@ namespace BE
 {
     public class Contract
     {
-
-        private int specializationId;
-        public int SpecializationId
+        public Contract(Employee emplee, Employer empler)
         {
-            get { return specializationId; }
-            set { specializationId = value; }
+            EmployerId = empler.CompanyId;
+            EmployeeID = emplee.Id;
         }
-
+       
         private int? contractNumber;
         public int? ContractNumber
         {
@@ -90,7 +88,7 @@ namespace BE
 
         public override string ToString()
         {
-            string temp = "ContractNumber : " + ContractNumber + "\nemployer ID" + employerID + "\nemployee ID" + employeeID;
+            string temp = "ContractNumber : " + ContractNumber + "\nemployer ID" + employerID + "\nemployee ID" + employeeID;             
             if (wasInterview != null)
             {
                 if (wasInterview == true)
@@ -117,11 +115,9 @@ namespace BE
                 {
                     temp += "\n the Net Salary Hourly : " + NetSalaryHourly;
                 }
-
                 if (startEmployment != null)
                 {
                     temp += "\n start Employment" + startEmployment;
-
                 }
                 if (startEmployment != null)
                 {
@@ -131,7 +127,6 @@ namespace BE
                 {
                     temp += "\nthe Hours Per Month in contract" + contractHoursPerMonth;
                 }
-
             }
             return temp;
         }

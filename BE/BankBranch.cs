@@ -6,27 +6,19 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class BankBranch
+   public class BankBranch
     {
-        public BankBranch(int id = 0, int bcode = 0, string bname = "", int branchkod = 0, int xcord = 0, int ycord = 0) //still temporary, and no address arg.
-        {
-            BranchID = id;
-            BranchCode = bcode;
-            BankName = bname;
-            BranchCode = branchkod;
-            //Address = addr;
-            XCoordinate = xcord;
-            YCoordinate = ycord;
-        }
-
         private int branchID;
+            
         public int BranchID
         {
             get { return branchID; }
             set { branchID = value; }
         }
 
+
         private int bankCode;
+
         public int BankCode
         {
             get { return bankCode; }
@@ -34,13 +26,14 @@ namespace BE
         }
 
         private string bankName;
+
         public string BankName
         {
             get { return bankName; }
             set { bankName = value; }
         }
-
         private int branchCode;
+
         public int BranchCode
         {
             get { return branchCode; }
@@ -48,6 +41,7 @@ namespace BE
         }
 
         private Address address;
+
         public Address Address
         {
             get { return address; }
@@ -55,12 +49,14 @@ namespace BE
         }
 
         private int xCoordinate;
+
         public int XCoordinate
         {
             get { return xCoordinate; }
             set { xCoordinate = value; }
         }
         private int yCoordinate;
+
         public int YCoordinate
         {
             get { return yCoordinate; }

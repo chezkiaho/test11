@@ -8,6 +8,11 @@ namespace BE
 {
     public class Employer
     {
+        public Employer(int id = 0)
+        {
+            CompanyId = id;
+        }
+
         private int? key;
         public int? Key
         {
@@ -33,7 +38,7 @@ namespace BE
             set { companyId = value; }
         }
 
-        private bool ltd;
+        private bool ltd; //beaam
         public bool Ltd
         {
             get { return ltd; }

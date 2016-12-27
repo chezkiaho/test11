@@ -8,9 +8,10 @@ namespace BE
 {
    public class Employee
     {
-        public Employee(int gotKey = 0)
+        public Employee(int temp = 0 , int gotid = 0)//this is temp ctor
         {
-            Key = gotKey;
+            Id = gotid;
+            specializationID = temp;
         }
         private int key;
         public int Key
@@ -21,7 +22,6 @@ namespace BE
 
 
         private int id;
-
         public int Id
         {
             get { return id; }
